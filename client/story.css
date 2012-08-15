@@ -1,0 +1,341 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    background: #ddd;
+    color: #333333;
+}
+
+body, input, textarea {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input {
+    font-size: 16px;
+    padding: 1px 2px 1px 2px;
+}
+
+textarea {
+    font-size: 16px;
+    padding: 1px 2px 1px 2px;
+    z-index: 2;
+    resize: vertical;
+    overflow: auto;
+    position: relative;
+}
+
+a, a:visited, a:active {
+    color: #68b;
+    text-decoration: none;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 120%;
+    padding: 15px 0px;
+    text-align: center;
+}
+
+#side-pane {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    right: auto;
+    overflow: auto;
+    border-right: 1px solid #999;
+    background: #bbb;
+}
+
+#top-tag-filter {
+    position: relative;
+    padding-left: 30px;
+    left: 15.1%;
+    width:83%;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    background: #bbb;
+    border-bottom: 1px solid #999;
+    overflow: auto;
+    z-index: 10;
+}
+
+#main-pane {
+    display: block;
+    position: relative;
+    left: 15%;
+    width: 85%;
+    right: 0;
+}
+
+
+#new-para-box {
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    overflow: visible;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    width:95%;
+    z-index: 5;
+}
+
+#new-para {
+    padding: 8px 36px;
+    width: 99%;
+    border: 3px solid #aaa;
+    background: #eee;
+    color: #666;
+    outline: none;
+}
+
+.tag {
+    cursor: pointer;
+    float: left;
+    margin: 5px;
+    padding: 2px 7px;
+    font-size: 85%;
+    font-weight: bold;
+    background: #999;
+    color: #ddd;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+
+    opacity: 1;
+    transition: opacity 0.3s linear;
+    -moz-transition: opacity 0.3s linear;
+    -webkit-transition: opacity 0.3s linear;
+    -o-transition: opacity 0.3s linear;
+
+    position: relative;
+}
+
+#tag-filter .label {
+    float: left;
+    margin-top: 9px;
+    margin-left: 12px;
+    margin-right: 8px;
+}
+
+#tag-filter .tag {
+    margin-top: 10px;
+    border: 1px solid #777;
+}
+
+#tag-filter .selected {
+    background: #9be;
+}
+
+#tag-filter .count {
+    font-weight: normal;
+    padding-left: 2px;
+}
+
+#stories .display {
+    padding: 0px 0px;
+}
+
+#stories .story-name {
+    border-top: 1px dotted #ccc;
+    padding: 3px 6px;
+    margin-right: 22px;
+    cursor: pointer;
+}
+
+#stories .selected {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    background: #9be;
+    font-weight: bold;
+}
+
+#stories .display .destroy {
+    overflow: auto;
+    float: right;
+    margin-right: 2px;
+    margin-top: -25px;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+}
+
+#stories .selected .destroy {
+    cursor: pointer;
+    margin-top: -25px;
+    height: 20px;
+    width: 20px;
+}
+
+#stories .display:hover .destroy {
+    background: url('/destroy.png') no-repeat 0 0;
+}
+
+#stories .display .destroy:hover {
+    background-position: 0 -20px;
+}
+
+#createStory {
+    padding: 3px;
+    margin-top: 5px;
+}
+
+#createStory input {
+    width: 95%;
+    background: #ddd;
+    outline: none;
+}
+
+#items-view {
+    position: relative;
+}
+
+#story .para {
+    display: block;
+    position: relative;
+    border-top: 1px dotted #ccc;
+    overflow: auto;
+}
+
+#story .para .display {
+    margin-left: 30px;
+    height: 100%;
+    float: left;
+    padding-top: 10px;
+    overflow: visible;
+    color: #666;
+}
+
+#story .para .edit {
+    margin-left: 30px;
+    padding-top: 10px;
+    overflow: visible;
+}
+
+#para-input {
+    width: 98%;
+    display: block;
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    padding-top: 6px;
+    z-index: 3;
+    background: #eee;
+    color: #666;
+    border: 3px solid #aaa;
+    outline: none;
+}
+
+#story .locked .para-text {
+    background: #aaa;
+}
+
+#story .para .destroy {
+    cursor: pointer;
+    position: absolute;
+    left: 5px;
+    top: 15px;
+    height: 20px;
+    width: 20px;
+}
+
+#story .para:hover .destroy {
+    background: url('/destroy.png') no-repeat 0 0;
+}
+
+#story .para .destroy:hover {
+    background-position: 0 -20px;
+}
+
+#story .para .item-tags {
+    overflow: auto;
+    float: right;
+    margin-right: 8px;
+}
+
+#story .para .item-tags .tag {
+    margin-top: 10px;
+}
+
+#story .para .item-tags .removable_tag {
+    padding-right: 22px;
+}
+
+#story .para .item-tags .tag .remove {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    bottom: 0;
+    width: 16px;
+    background: url("/close_16.png") no-repeat 0 center;
+}
+
+#story .para .item-tags .tag .remove:hover {
+    background-position: -16px center;
+}
+
+#story .para .item-tags div.addtag {
+    background: none;
+    color: #9be;
+    border: 1px dashed #999;
+}
+
+#story .para .check {
+    float: left;
+    width: 25px;
+}
+
+#story .para .para-text {
+    display: block;
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 100%;
+}
+
+#story .para .edit textarea {
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    outline: none;
+}
+
+#story .para .edit input {
+    margin-left: 10px;
+    margin-right: 10px;
+    outline: none;
+}
+
+#edittag-input {
+    width: 80px;
+    outline: none;
+    background: #999;
+    color: #ddd;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+#endOfStory {
+    width: 99%;
+    padding-top: 10px;
+    color: #fff;
+    line-height: 1.0;
+}

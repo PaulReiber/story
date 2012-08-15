@@ -1,0 +1,109 @@
+<head>
+  <title>story</title>
+</head>
+
+<body>
+  <div id="top-tag-filter">
+    {{> tag_filter}}
+  </div>
+
+  <div id="main-pane">
+    {{> paragraphs}}
+  </div>
+
+  <div id="side-pane">
+    {{> stories}}
+    <div id="endOfStory">
+      <center>
+	<small>
+	  <i><b>story</b> was invented by <br><a href="http://reiber.org">paul reiber</a><br> and was developed with<br> <a href="http://meteor.com">meteor.</a></i>
+	</small>
+      </center>
+    </div>
+  </div>
+</body>
+
+<template name="stories">
+  <h3>story&nbsp;&nbsp;</h3>
+  <div id="stories">
+    {{#each stories}}
+      <div class="display {{selected}}">
+        {{#if editing}}
+          <div class="edit">
+            <input class="story-name-input" id="story-name-input" type="text" value="{{name}}" />
+          </div>
+        {{else}}
+            <div class="story-name {{name_class}}">
+              {{name}}
+            </div>
+	    <div class="destroy"></div>
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+  <div id="createStory">
+    <input type="text" id="new-story" placeholder="New story" />
+  </div>
+</template>
+
+<template name="paragraphs">
+  {{#if any_story_selected}}
+    <div id="items-view">
+      <ul id="story">
+	{{#each paragraphs}}
+	  {{> para_item}}
+	{{/each}}
+      </ul>
+    </div>
+    <div id="new-para-box">
+      <textarea id="new-para" wrap="soft" rows=2 onFocus="resetTA(this);">
+
+Click for new paragraph.  Shift-enter for newlines, enter to submit.</textarea>
+    </div>
+  {{/if}}
+</template>
+
+<template name="para_item">
+  <li class="para {{locked_class}}">
+    {{#if editing}}
+      <div class="edit">
+	<textarea id="para-input" wrap="soft" rows=1>{{text}}</textarea>
+      </div>
+    {{else}}
+      <div class="destroy"></div>
+      <div class="display">
+        <div class="para-text">{{text}}</div>
+      </div>
+    {{/if}}
+    <div class="item-tags">
+      {{#each tag_objs}}
+        <div class="tag removable_tag">
+          <div class="name">{{tag}}</div>
+          <div class="remove"></div>
+        </div>
+      {{/each}}
+      {{#if adding_tag}}
+        <div class="tag edittag">
+          <input type="text" id="edittag-input" value="" />
+        </div>
+      {{else}}
+        <div class="tag addtag">
+          +tag
+        </div>
+      {{/if}}
+    </div>
+  </li>
+</template>
+
+<template name="tag_filter">
+  <div id="tag-filter" class="tag-story">
+    <div class="label">Show:</div>
+    {{#each tags}}
+      <div class="tag {{selected}}">
+        {{tag_text}} <span class="count">({{count}})</span>
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+
