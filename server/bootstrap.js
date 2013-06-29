@@ -1,5 +1,5 @@
 /* 
-** (C)Copyright 2012 Paul Reiber
+** (C)Copyright 2012-2013 Paul Reiber
 **
 **    This file is part of the application "story".
 **
